@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 
-const API_ENDPOINT = "https://api.themoviedb.org/3";
-const { API_KEY } = process.env;
+const { API_KEY, API_ENDPOINT } = process.env;
 
 const nextConfig = {
   reactStrictMode: true,

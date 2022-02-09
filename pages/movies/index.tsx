@@ -1,3 +1,4 @@
+import { GetServerSideProps } from "next";
 import MoviesList from "../../components/MoviesList";
 import Seo from "../../components/Seo";
 import { IMovie } from "../../models";
@@ -15,9 +16,10 @@ const MoviesPage = ({ movies }: MoviesPageProps) => {
   );
 };
 
-export const getServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
+  const { API_ENDPOINT, API_KEY } = process.env;
   const { results } = await fetch(
-    "http://localhost:3000/api/movies/popular"
+    `${API_ENDPOINT}/movie/popular?api_key=${API_KEY}`
   ).then((res) => res.json());
   return {
     props: {
